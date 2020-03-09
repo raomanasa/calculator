@@ -5,15 +5,45 @@ class App extends Component{
   constructor (){
     super()
     this.state = {
-      number: [],
+      data: [],
       result: null
     }
   }
+  handleResult (){
+    let number = []
+    let sign = []
+    for (let i=0;i<this.state.data.length;i++) {
+      if (typeof this.state.data[i] == 'string') {
+        sign.push(this.state.data[i])
+      }
+      else {
+        number.push(this.state.data[i])
+      }
+    }
+    let ans = number[0]
+    for(let i=0;i<sign.length;i++){
+      if (sign[i]==="+") {
+        ans=ans+number[i+1]
+      }
+      else if (sign[i]==="-"){
+        ans=ans-number[i+1]
+      }
+      else if (sign[i]==="%"){
+        ans=ans%number[i+1]
+      }
+      else if (sign[i]==="*"){
+        ans=ans*number[i+1]
+      }
+    }
+    console.log(number)
+    console.log(sign)
+    console.log(ans)
+  }
   handleClick (num){
-    let temp = this.state.number
+    let temp = this.state.data
     console.log(temp)
     temp.push(num)
-    this.setState({number:temp})
+    this.setState({data:temp})
     console.log(temp)
 
   }
@@ -34,7 +64,7 @@ class App extends Component{
      <button onClick={() => this.handleClick("-")}>-</button><br/>
      <button onClick={() => this.handleClick("%")}>%</button>
      <button onClick={() => this.handleClick("*")}>*</button>
-     <button>=</button>
+     <button onClick={() => this.handleResult()}>=</button>
    </div>
   );
   }
