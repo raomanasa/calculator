@@ -9,6 +9,9 @@ class App extends Component{
       result: null
     }
   }
+  handleClear (){
+    this.setState({data: [], result: null})
+  }
   handleResult (){
     let number = []
     let sign = []
@@ -35,6 +38,7 @@ class App extends Component{
         ans=ans*number[i+1]
       }
     }
+    this.setState({result:ans})
     console.log(number)
     console.log(sign)
     console.log(ans)
@@ -65,6 +69,8 @@ class App extends Component{
      <button onClick={() => this.handleClick("%")}>%</button>
      <button onClick={() => this.handleClick("*")}>*</button>
      <button onClick={() => this.handleResult()}>=</button>
+     <button onClick={() => this.handleClear()}>CLEAR</button>
+     <p>{this.state.result}</p>
    </div>
   );
   }
