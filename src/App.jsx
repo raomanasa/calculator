@@ -53,7 +53,10 @@ class App extends Component{
   }
   render(){
   return (
-   <div className="box">
+    <div className="box">
+    <h1>CALCULATOR</h1>
+    
+   
      <button className="button" onClick={() => this.handleClick(1)}>1</button>
      <button className="button" onClick={() => this.handleClick(2)}>2</button>
      <button className="button" onClick={() => this.handleClick(3)}>3</button><br/>
